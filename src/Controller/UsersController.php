@@ -33,8 +33,8 @@ class UsersController extends AppController
 				]
 			],
 			'loginRedirect' => [
-				'controller' => 'Users',
-				'action' => 'login'
+				'controller' => 'Events',
+				'action' => 'add'
 			],
 			'logoutRedirect' => [
 				'controller' => 'Users',
@@ -54,7 +54,7 @@ class UsersController extends AppController
 				$this->Auth->setUser($user);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
-			$this->Flash->error('ユーザー名かパスワードが間違っています。');
+      $this->Flash->error('57ユーザー名かパスワードが間違っています。');
 		}
 	}
 
@@ -73,12 +73,13 @@ class UsersController extends AppController
 
 	// 認証時のロールのチェック
 	public function isAuthorized($user = null){
+
 		// 管理者はtrue
-		if($user['role'] === 'admin'){
+		if($user['user_role_id'] === 1){
 		   return true;
 		}
 		// 一般ユーザーはfalse
-		if($user['role'] === 'user'){
+		if($user['user_role_id'] === 0){
 		   return false;
 		}
 		// 他はすべてfalse

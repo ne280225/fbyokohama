@@ -12,7 +12,7 @@ use Exception;
  *
  * @method \App\Model\Entity\ParticipationPlan[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class ParticipationPlansController extends BaseController
+class ParticipationPlansController extends AppController
 {
     /**
      * Index method
