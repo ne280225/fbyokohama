@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+use Cake\Event\Event;
+use Exception;
 /**
  * ParticipationPlans Controller
  *
@@ -10,7 +12,7 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\ParticipationPlan[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class ParticipationPlansController extends AppController
+class ParticipationPlansController extends BaseController
 {
     /**
      * Index method
