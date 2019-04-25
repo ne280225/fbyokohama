@@ -34,6 +34,10 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
+
+      //S  CakePlugin::load('DebugKit');//追加した行
+        $this->addPlugin('DebugKit');
+
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 

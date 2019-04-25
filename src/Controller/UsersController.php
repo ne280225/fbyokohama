@@ -29,7 +29,7 @@ class UsersController extends AppController
 					'fields' => [
 						'username' => 'user_name',
 						'password' => 'password'
-					]
+					],
 				]
 			],
 			'loginRedirect' => [
@@ -46,6 +46,7 @@ class UsersController extends AppController
 
 	// ログイン処理
 	function login(){
+    //エラーログに出力$this->log($this->Auth->identify());
 		// POST時の処理
 		if($this->request->isPost()) {
 			$user = $this->Auth->identify();
