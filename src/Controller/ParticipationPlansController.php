@@ -20,13 +20,6 @@ class ParticipationPlansController extends BaseController
      * @return \Cake\Http\Response|void
      */
 
-     //ここから記述
-/*    public $pagenate = [
-      'ParticipationPlans' => ['scope' => 'participationPlan'],
-      'Events' => ['scope' => 'event']
-    ];
-**/
-
     public function index()
     {
 
