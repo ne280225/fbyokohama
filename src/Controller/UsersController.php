@@ -76,11 +76,11 @@ class UsersController extends AppController
 	public function isAuthorized($user = null){
 
 		// 管理者はtrue
-		if($user['user_role_id'] === 1){
+		if($user['user_role_id'] === 2){
 		   return true;
 		}
 		// 一般ユーザーはfalse
-		if($user['user_role_id'] === 0){
+		if($user['user_role_id'] === 1){
 		   return false;
 		}
 		// 他はすべてfalse

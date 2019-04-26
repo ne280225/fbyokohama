@@ -10,7 +10,7 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\Event[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class EventsController extends AppController
+class EventsController extends BaseController
 {
     /**
      * Index method

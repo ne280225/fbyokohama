@@ -6,7 +6,7 @@ use App\Controller\AppController;
 use Cake\Auth\DefaultPasswordHasher; // added.
 use Cake\Event\Event; // added.
 
-class AuctionBaseController extends AppController
+class BaseController extends AppController
 {
 
 	// 初期化処理
@@ -21,7 +21,7 @@ class AuctionBaseController extends AppController
 			'authenticate' => [
 				'Form' => [
 					'fields' => [
-						'user_name' => 'user_name',
+						'username' => 'user_name',
 						'password' => 'password'
 					]
 				]

@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * UserNameCategory Entity
  *
  * @property int $id
- * @property string $user_name_category_name
+ * @property string $name
  *
  * @property \App\Model\Entity\User[] $users
  */
@@ -23,7 +23,7 @@ class UserNameCategory extends Entity
      * @var array
      */
     protected $_accessible = [
-        'user_name_category_name' => true,
+        'name' => true,
         'users' => true
     ];
 }

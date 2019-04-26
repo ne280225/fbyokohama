@@ -12,22 +12,32 @@ use Exception;
  *
  * @method \App\Model\Entity\ParticipationPlan[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class ParticipationPlansController extends AppController
+class ParticipationPlansController extends BaseController
 {
     /**
      * Index method
      *
      * @return \Cake\Http\Response|void
      */
+
+     //ここから記述
+/*    public $pagenate = [
+      'ParticipationPlans' => ['scope' => 'participationPlan'],
+      'Events' => ['scope' => 'event']
+    ];
+**/
+
     public function index()
     {
+
         $this->paginate = [
-            'contain' => ['Users', 'Events']
+            'contain' => ['Events']
         ];
         $participationPlans = $this->paginate($this->ParticipationPlans);
-
         $this->set(compact('participationPlans'));
+
     }
+
 
     /**
      * View method
