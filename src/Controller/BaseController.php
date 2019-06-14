@@ -68,11 +68,11 @@ class BaseController extends AppController
 	// 認証時のロールの処理
 	public function isAuthorized($user = null){
 		// 管理者はtrue
-		if($user['user_role_id'] === 1){
+		if($user['user_role_id'] === 2){
 		   return true;
 		}
 		// 一般ユーザーはAuctionControllerのみtrue、他はfalse
-		if($user['user_role_id'] === 0){
+		if($user['user_role_id'] === 1){
 			if ($this->name == 'Auction'){
 				return true;
 			} else {

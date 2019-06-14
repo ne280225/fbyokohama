@@ -21,7 +21,7 @@
         <?php
             echo $this->Form->control('user_name');
             echo $this->Form->control('password');
-            echo $this->Form->control('user_role_id', ['options' => $userRoles]);
+            echo $this->Form->control('user_role_id');
             echo $this->Form->control('user_name_category_id');
         ?>
     </fieldset>

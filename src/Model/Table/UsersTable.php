@@ -70,7 +70,7 @@ class UsersTable extends Table
             ->allowEmptyString('user_name', false);
 
         $validator
-            ->integer('password')
+            ->scalar('password')
             ->requirePresence('password', 'create')
             ->allowEmptyString('password', false);
 

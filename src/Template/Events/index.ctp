@@ -3,7 +3,11 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Event[]|\Cake\Collection\CollectionInterface $events
  */
+
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/test.js"></script>
 
 <div class="events index large-9 medium-8 columns content">
     <h3><?= __('Events') ?></h3>
@@ -16,6 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('event_start_time') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('event_end_time') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th>ボタン</th>
             </tr>
         </thead>
         <tbody>
@@ -31,10 +36,13 @@
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $event->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete # {0}?', $event->id)]) ?>
                 </td>
+                <td><button id="ajaxbutton">ボタン</button></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    <div id="tag">
+    </div>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('first')) ?>

@@ -22,8 +22,8 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('password') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_role_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_name_category_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_role_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_name_category_name') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -32,9 +32,11 @@
             <tr>
                 <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->user_name) ?></td>
-                <td><?= $this->Number->format($user->password) ?></td>
-                <td><?= $user->has('user_role') ? $this->Html->link($user->user_role->id, ['controller' => 'UserRoles', 'action' => 'view', $user->user_role->id]) : '' ?></td>
-                <td><?= $this->Number->format($user->user_name_category_id) ?></td>
+                <td><?= ($user->password) ?></td>
+                <td><?= $user->has('user_role') ? $this->Html->link($user->user_role->user_role_name, ['controller' => 'UserRoles', 'action' => 'view', $user->user_role->user_role_name]) : '' ?></td>
+<?= var_dump($user->user_name_category->name);?>
+                <td><?= $user->user_name_category->name ?></td>
+
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

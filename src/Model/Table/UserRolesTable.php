@@ -33,9 +33,8 @@ class UserRolesTable extends Table
         parent::initialize($config);
 
         $this->setTable('user_roles');
-        $this->setDisplayField('id');
+        $this->setDisplayField('user_role_name');
         $this->setPrimaryKey('id');
-
         $this->hasMany('Users', [
             'foreignKey' => 'user_role_id'
         ]);

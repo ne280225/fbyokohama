@@ -35,7 +35,6 @@ class UserNameCategoriesTable extends Table
         $this->setTable('user_name_categories');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
-
         $this->hasMany('Users', [
             'foreignKey' => 'user_name_category_id'
         ]);

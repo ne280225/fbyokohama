@@ -17,16 +17,17 @@ class RegistrationsController extends BaseController
     $this->loadComponent('Paginator');
     $this->loadModel('ParticipationPlans');
     $this->loadModel('Events');
+    $this->loadModel('Users');
   }
   public function index()
     {
 
       $this->paginate = [
-          'contain' => ['Events']
+          'contain' => ['ParticipationPlans']
         ];
-        
-        $participationPlans = $this->paginate('ParticipationPlans');
-        $this->set(compact('participationPlans'));
+
+        $events = $this->paginate($this->Events);
+        $this->set(compact('events'));
 
     }
 
@@ -39,6 +40,32 @@ class RegistrationsController extends BaseController
         ]);
 
         $this->set('participationPlan', $participationPlan);
+    }
+
+    public function change($id = null)
+    {
+      if($id = null){
+
+        $participationPlan = $this->ParticipationPlans->newEntity();
+
+      }else{
+        $participationPlan = $this->ParticipationPlans->get($id, [
+            'contain' => ['Users', 'Events','ParticipationPlans']
+        ]);
+      }
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+            if ($this->ParticipationPlans->save($participationPlan)) {
+                $this->Flash->success(__('The participation plan has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+        }
+        $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+        $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+        $this->set(compact('participationPlan', 'users', 'events'));
+      
     }
 
 }

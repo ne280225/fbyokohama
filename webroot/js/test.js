@@ -1,0 +1,12 @@
+$(function(){
+  $('.join').click(function(){
+    $(this).text("pushd!!!!");
+    alert('['+$(this).val()+']に参加しますか？');
+  });
+});
+$(function(){
+  $('.escape').click(function(){
+    $(this).text("pushd!!!!");
+    alert('['+$(this).val()+']に不参加でよろしいですか？');
+  });
+});

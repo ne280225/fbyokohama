@@ -12,6 +12,14 @@ use App\Controller\AppController;
  */
 class EventsController extends BaseController
 {
+    public function test(){
+      $this->autoRender = false;
+      if($this->request->is("ajax")){
+        echo "ajax";
+      }else{
+        echo "not ajax";
+      }
+    }
     /**
      * Index method
      *
@@ -19,6 +27,7 @@ class EventsController extends BaseController
      */
     public function index()
     {
+      //echo $this->Html->script('ajaxtest.js');
         $events = $this->paginate($this->Events);
 
         $this->set(compact('events'));
