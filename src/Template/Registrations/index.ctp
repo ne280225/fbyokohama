@@ -32,7 +32,6 @@
       ///一覧のループ
       <?php foreach ($events as $event): ?>
         <tr>
-          <td><?= $now_event_id=$this->Number->format($event->id) ?></td>
           <td><?= h($event->event_name) ?></td>
           <td><?= h($event->event_place) ?></td>
           <td><?= h($event->event_start_time) ?></td>
@@ -54,25 +53,39 @@
           }
           ?>
         </td>
-        <td>→user_id
 
-          <?= var_dump($login_user)?>
-          <?= var_dump($now_event_id) ?>//それぞれのｅｖｅｎｔ＿ｉｄを取得出来ている状態
+        <td>参加→不参加
 
+          <?= $this->Form->create(null,['url' => ['controller' => 'ParticipationPlans','action' => 'jointoescape', '6'], 'type' => 'post']); ?>
 
-
-          <?= $this->Form->create(null,['url' => ['controller' => 'ParticipationPlans','action' => 'join'], 'type' => 'post']); ?>
-// $this->Formの書き方を調べる
-
-
-
-          <?= $this->Form->hidden('event_id',['value'=>'4']); ?>
+          <?= $this->Form->hidden('event_id',['value'=>'6']); ?>
           <?= $this->Form->hidden('user_id',['value'=>'6']); ?>
-          <?= $this->Form->hidden('status',['value'=>'1']); ?>
+          <?= $this->Form->hidden('status',['value'=>'2']); ?>
+
+
           <?= $this->Form->hidden('participation_start_time',['value'=>'2019-06-14 09:44:00']); ?>
           <?= $this->Form->hidden('participation_end_time',['value'=>'2019-06-14 09:44:00']); ?>
 
-          <?= $this->Form->button(__('submit')); ?>
+          <?= $this->Form->button(__('参加→不参加')); ?>
+          <?= $this->Form->end(); ?>
+        </td>
+
+        <td>未参加→参加
+
+          <//?= var_dump($event->id)?>
+          <//?= var_dump($login_user)?>
+
+          <?= $this->Form->create(null,['url' => ['controller' => 'ParticipationPlans','action' => 'join'], 'type' => 'post']); ?>
+
+          <?= $this->Form->hidden('event_id',['value'=>'6']); ?>
+          <?= $this->Form->hidden('user_id',['value'=>'6']); ?>
+          <?= $this->Form->hidden('status',['value'=>'1']); ?>
+
+
+          <?= $this->Form->hidden('participation_start_time',['value'=>'2019-06-14 09:44:00']); ?>
+          <?= $this->Form->hidden('participation_end_time',['value'=>'2019-06-14 09:44:00']); ?>
+
+          <?= $this->Form->button(__('未参加→参加')); ?>
           <?= $this->Form->end(); ?>
         </td>
         <td class="join">

@@ -14,11 +14,26 @@ use Exception;
  */
 class ParticipationPlansController extends BaseController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
+
+     public function jointoescape($id = null)
+       {
+           $participationPlan = $this->ParticipationPlans->get($id, [
+               'contain' => []
+           ]);
+           if ($this->request->is(['patch', 'post', 'put'])) {
+               $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+               if ($this->ParticipationPlans->save($participationPlan)) {
+                   $this->Flash->success(__('The participation plan has been saved.'));
+
+                   return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+               }
+               $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+           }
+           $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+           $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+           $this->set(compact('participationPlan', 'users', 'events'));
+       }
+
      public function join($id = null)
        {
      //    if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
@@ -29,7 +44,6 @@ class ParticipationPlansController extends BaseController
 
            if ($this->request->is('post')) {
                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-//var_dump($participationPlan);exit();
                if ($this->ParticipationPlans->save($participationPlan)) {
                    $this->Flash->success(__('The participationPlan has been saved.'));
 
@@ -124,13 +138,6 @@ class ParticipationPlansController extends BaseController
         $this->set(compact('participationPlan', 'users', 'events'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Participation Plan id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $participationPlan = $this->ParticipationPlans->get($id, [
