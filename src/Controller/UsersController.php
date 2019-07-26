@@ -4,9 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Auth\DefaultPasswordHasher; // added.
 use Cake\Event\Event; // added.
-  // code...
-//  break;
-
+use Cake\Utility\Hash;
 /**
  * Users Controller
  *
@@ -14,6 +12,7 @@ use Cake\Event\Event; // added.
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
+
 class UsersController extends AppController
 {
   public function initialize()
@@ -42,14 +41,28 @@ class UsersController extends AppController
 			],
 			'authError' => 'ログインしてください。',
 		]);
+    $this->loadModel('UserNameCategories');
+    $this->loadModel('Users');
 	}
 
 	// ログイン処理
 	function login(){
     //エラーログに出力$this->log($this->Auth->identify());
 		// POST時の処理
+
+    $usernamecategories = $this->UserNameCategories->find('all');//,['conditions'=>['id'=>1]]);
+    $categories = Hash::combine($usernamecategories->toArray(),'{n}.id','{n}.name');
+
+    $allusers = Hash::combine($this->Users->find('all')->toArray(),'{n}.id','{n}.user_name','{n}.user_name_category_id');
+    //$allusers = Hash::combine($this->Users->find('all')->toArray(),'{n}.id','{n}');
+
+
+
+    $this->set(compact('usernamecategories','categories','allusers'));
+
 		if($this->request->isPost()) {
 			$user = $this->Auth->identify();
+
 			// Authのidentifyをユーザーに設定
 			if(!empty($user)){
 				$this->Auth->setUser($user);

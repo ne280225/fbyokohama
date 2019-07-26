@@ -47,6 +47,8 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/registrations',['controller'=>'Registrations','action'=>'index']);
+    //2019.07.19追加
+    $routes->connect('/registrations/join',['controller'=>'Registrations','action'=>'join']);
 
     // Register scoped middleware for in scopes.
     $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
@@ -70,6 +72,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
 
     /**
      * Connect catchall routes for all controllers.
