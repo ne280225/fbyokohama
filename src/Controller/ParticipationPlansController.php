@@ -19,9 +19,62 @@ class ParticipationPlansController extends BaseController
      *
      * @return \Cake\Http\Response|void
      */
+     public function join($id = null)
+       {
+     //    if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
+    //     if($id == null){
+
+           $participationPlan = $this->ParticipationPlans->newEntity();
+
+
+           if ($this->request->is('post')) {
+               $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+//var_dump($participationPlan);exit();
+               if ($this->ParticipationPlans->save($participationPlan)) {
+                   $this->Flash->success(__('The participationPlan has been saved.'));
+
+                   return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+               }
+//               pr(\Cake\Error\Debugger::trace());exit();
+               $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
+               return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+           }
+           $this->set(compact('participationPlan'));
+           return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+       }
+
+
+
+   // public function change($id = null)
+   //   {
+   //     if($id = null){
+   //
+   //       $participationPlan = $this->ParticipationPlans->newEntity();
+   //
+   //     }else{
+   //       $participationPlan = $this->ParticipationPlans->get($id, [
+   //           'contain' => ['Users', 'Events','ParticipationPlans']
+   //       ]);
+   //     }
+   //       if ($this->request->is(['patch', 'post', 'put'])) {
+   //           $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+   //           if ($this->ParticipationPlans->save($participationPlan)) {
+   //               $this->Flash->success(__('The participation plan has been saved.'));
+   //
+   //               return $this->redirect(['action' => 'index']);
+   //           }
+   //           $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+   //       }
+   //       $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+   //       $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+   //       $this->set(compact('participationPlan', 'users', 'events'));
+   //
+   //   }
 
     public function index()
     {
+
+
 
         $this->paginate = [
             'contain' => ['Events']
@@ -55,6 +108,7 @@ class ParticipationPlansController extends BaseController
      */
     public function add()
     {
+
         $participationPlan = $this->ParticipationPlans->newEntity();
         if ($this->request->is('post')) {
             $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());

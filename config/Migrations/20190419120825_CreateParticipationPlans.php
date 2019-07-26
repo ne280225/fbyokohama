@@ -30,11 +30,11 @@ class CreateParticipationPlans extends AbstractMigration
         ]);
         $table->addColumn('participation_start_time', 'datetime', [
             'default' => null,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('participation_end_time', 'datetime', [
             'default' => null,
-            'null' => false,
+            'null' => true,
         ]);
         $table->create();
     }

@@ -29,7 +29,7 @@ class RegistrationsController extends BaseController
       $events = $this->paginate($this->Events);
 //      $this->set(compact('events'));
 
-//ここからーーーーーーーーーーーーーーーーーー
+//ここで$myparticipationPlansを設定して、viewですでにレコードが存在するかを調べるーーーーーーーーーーーーーーーーーー
       $my = $this->ParticipationPlans->find('all',[
         'conditions'=>['user_id'=>6]
       ]);
@@ -48,7 +48,8 @@ class RegistrationsController extends BaseController
 
     public function join($id = null)
       {
-        if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
+    //    if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
+        if($id == null){
 
           $participationPlan = $this->ParticipationPlans->newEntity();
 
@@ -70,6 +71,7 @@ class RegistrationsController extends BaseController
           $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
           $this->set(compact('participationPlan', 'users', 'events'));
 
+          return $this->redirect(['action' => 'index']);
       }
   // public function change($id = null)
   //   {

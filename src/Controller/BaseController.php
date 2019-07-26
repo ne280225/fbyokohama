@@ -45,7 +45,16 @@ class BaseController extends AppController
 			$user = $this->Auth->identify();
 			// Authのidentifyをユーザーに設定
 			if(!empty($user)){
+
+				//セッションにuser_idを登録
+				$session = $this->request->session();
+				$session->write('user_id', $user);
+				$login_user = $session->read('user_id');
+
+
+
 				$this->Auth->setUser($user);
+
 				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error('ユーザー名かパスワードが間違っています。');
@@ -60,10 +69,10 @@ class BaseController extends AppController
 	}
 
 	// 認証をしないページの設定
-	public function beforeFilter(Event $event) {
-		parent::beforeFilter($event);
-		$this->Auth->allow([]);
-	}
+	// public function beforeFilter(Event $event) {
+	// 	parent::beforeFilter($event);
+	// 	$this->Auth->allow([]);
+	// }
 
 	// 認証時のロールの処理
 	public function isAuthorized($user = null){
@@ -73,11 +82,11 @@ class BaseController extends AppController
 		}
 		// 一般ユーザーはAuctionControllerのみtrue、他はfalse
 		if($user['user_role_id'] === 1){
-			if ($this->name == 'Auction'){
-				return true;
-			} else {
+			// if ($this->name == 'Event'){
+			// 	return true;
+			// } else {
 				return false;
-			}
+			// }
 		}
 		// その他はすべてfalse
 		return false;

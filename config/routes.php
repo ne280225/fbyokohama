@@ -47,7 +47,7 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/registrations',['controller'=>'Registrations','action'=>'index']);
-    //2019.07.19追加
+    //2019.07.26追加
     $routes->connect('/registrations/join',['controller'=>'Registrations','action'=>'join']);
 
     // Register scoped middleware for in scopes.
@@ -59,7 +59,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * Apply a middleware to the current route scope.
      * Requires middleware to be registered via `Application::routes()` with `registerMiddleware()`
      */
-    $routes->applyMiddleware('csrf');
+    //$routes->applyMiddleware('csrf'); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

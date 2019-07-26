@@ -19,6 +19,9 @@
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
+
+        <pre><?php var_dump($participationPlans); ?></pre>
+
         <tbody>
             <?php foreach ($participationPlans as $participationPlan): ?>
             <tr>
