@@ -1,5 +1,5 @@
 $(function(){
-  $('.join').click(function(){
+  $('.change').click(function(){
     $(this).text("pushd!!!!");
     alert('['+$(this).val()+']に参加しますか？');
   });

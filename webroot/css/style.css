@@ -1,3 +1,12 @@
+.button_r {
+    background: #f00;
+}
+.button_g {
+    background: #0a0;
+}
+
+//////////////////////////////////////////
+
 .disabled a,
 a.disabled {
     pointer-events: none;
@@ -323,12 +332,12 @@ pre {
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #116d76;
+    background: #888;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
-    background-color: #308e97;
-    background: #308e97;
+    background-color: #777;
+    background: #999;
 }
 
 .side-nav li.heading {
@@ -394,6 +403,7 @@ fieldset legend {
     line-height: 2rem;
 }
 
+
 .form button[type="submit"] {
     float: right;
     text-transform: uppercase;
@@ -405,9 +415,8 @@ fieldset legend {
     box-shadow: none;
 }
 
-button {
-    background: #966600;
-}
+
+
 
 div.message {
     text-align: center;

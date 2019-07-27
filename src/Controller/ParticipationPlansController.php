@@ -15,75 +15,126 @@ use Exception;
 class ParticipationPlansController extends BaseController
 {
 
-     public function jointoescape($id = null)
-       {
-           $participationPlan = $this->ParticipationPlans->get($id, [
-               'contain' => []
-           ]);
-           if ($this->request->is(['patch', 'post', 'put'])) {
-               $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-               if ($this->ParticipationPlans->save($participationPlan)) {
-                   $this->Flash->success(__('The participation plan has been saved.'));
+  public function tojoin($id = null)
+    {
+      if($id == null){
 
-                   return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-               }
-               $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
-           }
-           $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
-           $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
-           $this->set(compact('participationPlan', 'users', 'events'));
-       }
+            $participationPlan = $this->ParticipationPlans->newEntity();
 
-     public function join($id = null)
-       {
-     //    if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
-    //     if($id == null){
+            if ($this->request->is('post')) {
+                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+                if ($this->ParticipationPlans->save($participationPlan)) {
+                    $this->Flash->success(__('The participationPlan has been saved.'));
 
-           $participationPlan = $this->ParticipationPlans->newEntity();
+                    return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                }
+                $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
+                return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+            }
+            $this->set(compact('participationPlan'));
+            return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+          }elseif($id > 1){
 
+            $participationPlan = $this->ParticipationPlans->get($id, [
+                'contain' => []
+            ]);
+            if ($this->request->is(['patch', 'post', 'put'])) {
 
-           if ($this->request->is('post')) {
-               $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-               if ($this->ParticipationPlans->save($participationPlan)) {
-                   $this->Flash->success(__('The participationPlan has been saved.'));
+                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+                if ($this->ParticipationPlans->save($participationPlan)) {
+                    $this->Flash->success(__('The participation plan has been saved.'));
 
-                   return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-               }
-//               pr(\Cake\Error\Debugger::trace());exit();
-               $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
-               return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-           }
-           $this->set(compact('participationPlan'));
-           return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-       }
+                    return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                }
+                $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+            }
+            $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+            $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+            $this->set(compact('participationPlan', 'users', 'events'));
+          }
+        }
 
+        public function change($id = null)
+          {
+            if($id == null){
 
+                  $participationPlan = $this->ParticipationPlans->newEntity();
 
-   // public function change($id = null)
-   //   {
-   //     if($id = null){
-   //
-   //       $participationPlan = $this->ParticipationPlans->newEntity();
-   //
-   //     }else{
-   //       $participationPlan = $this->ParticipationPlans->get($id, [
-   //           'contain' => ['Users', 'Events','ParticipationPlans']
-   //       ]);
-   //     }
-   //       if ($this->request->is(['patch', 'post', 'put'])) {
-   //           $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-   //           if ($this->ParticipationPlans->save($participationPlan)) {
-   //               $this->Flash->success(__('The participation plan has been saved.'));
-   //
-   //               return $this->redirect(['action' => 'index']);
-   //           }
-   //           $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
-   //       }
-   //       $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
-   //       $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
-   //       $this->set(compact('participationPlan', 'users', 'events'));
-   //
-   //   }
+                  if ($this->request->is('post')) {
+                      $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+                      if ($this->ParticipationPlans->save($participationPlan)) {
+                          $this->Flash->success(__('The participationPlan has been saved.'));
+
+                          return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                      }
+                      $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
+                      return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                  }
+                  $this->set(compact('participationPlan'));
+                  return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                }elseif($id > 1){
+
+                  $participationPlan = $this->ParticipationPlans->get($id, [
+                      'contain' => []
+                  ]);
+                  if ($this->request->is(['patch', 'post', 'put'])) {
+
+                      $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+                      if ($this->ParticipationPlans->save($participationPlan)) {
+                          $this->Flash->success(__('The participation plan has been saved.'));
+
+                          return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+                      }
+                      $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+                  }
+                  $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+                  $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+                  $this->set(compact('participationPlan', 'users', 'events'));
+                }
+              }
+
+     // public function jointoescape($id = null)
+     //   {
+     //       $participationPlan = $this->ParticipationPlans->get($id, [
+     //           'contain' => []
+     //       ]);
+     //       if ($this->request->is(['patch', 'post', 'put'])) {
+     //           $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+     //           if ($this->ParticipationPlans->save($participationPlan)) {
+     //               $this->Flash->success(__('The participation plan has been saved.'));
+     //
+     //               return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+     //           }
+     //           $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
+     //       }
+     //       $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
+     //       $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
+     //       $this->set(compact('participationPlan', 'users', 'events'));
+     //   }
+//
+//      public function join($id = null)
+//        {
+//      //    if($myparticipationPlans->find('all',['event_id'=>$id]) == null){
+//     //     if($id == null){
+//
+//            $participationPlan = $this->ParticipationPlans->newEntity();
+//
+//
+//            if ($this->request->is('post')) {
+//                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+//                if ($this->ParticipationPlans->save($participationPlan)) {
+//                    $this->Flash->success(__('The participationPlan has been saved.'));
+//
+//                    return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+//                }
+// //               pr(\Cake\Error\Debugger::trace());exit();
+//                $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
+//                return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+//            }
+//            $this->set(compact('participationPlan'));
+//            return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
+//        }
+
 
     public function index()
     {
