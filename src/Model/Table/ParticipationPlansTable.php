@@ -66,13 +66,13 @@ class ParticipationPlansTable extends Table
 
         $validator
             ->dateTime('participation_start_time')
-            ->requirePresence('participation_start_time', 'create')
-            ->allowEmptyDateTime('participation_start_time', false);
+          //  ->requirePresence('participation_start_time', 'create')
+            ->allowEmptyDateTime('participation_start_time', true);
 
         $validator
             ->dateTime('participation_end_time')
-            ->requirePresence('participation_end_time', 'create')
-            ->allowEmptyDateTime('participation_end_time', false);
+            //->requirePresence('participation_end_time', 'create')
+            ->allowEmptyDateTime('participation_end_time', true);
 
         return $validator;
     }

@@ -22,7 +22,7 @@ class RegistrationsController extends BaseController
   }
   public function index()
     {
-
+// var_dump($this->request->session()->read('Auth.User.id'));
      $this->paginate = [
          'contain' => ['ParticipationPlans']
        ];
@@ -31,7 +31,7 @@ class RegistrationsController extends BaseController
 
 //ここで$myparticipationPlansを設定して、viewですでにレコードが存在するかを調べるーーーーーーーーーーーーーーーーーー
       $my = $this->ParticipationPlans->find('all',[
-        'conditions'=>['user_id'=>6]
+        'conditions'=>['user_id'=>$this->request->session()->read('Auth.User.id')]
       ]);
       $myparticipationPlans = Hash::combine($my->toArray(),'{n}.event_id','{n}');
       $this->set(compact('events','myparticipationPlans','my'));
@@ -59,6 +59,7 @@ class RegistrationsController extends BaseController
           ]);
         }
           if ($this->request->is(['patch', 'post', 'put'])) {
+
               $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
               if ($this->ParticipationPlans->save($participationPlan)) {
                   $this->Flash->success(__('The participation plan has been saved.'));

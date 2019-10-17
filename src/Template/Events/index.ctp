@@ -6,8 +6,6 @@
 
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/test.js"></script>
 
 <div class="events index large-9 medium-8 columns content">
     <h3><?= __('Events') ?></h3>

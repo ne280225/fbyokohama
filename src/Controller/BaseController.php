@@ -38,35 +38,6 @@ class BaseController extends AppController
 		]);
 	}
 
-	// ログイン処理
-	function login(){
-		// POST時の処理
-		if($this->request->isPost()) {
-			$user = $this->Auth->identify();
-			// Authのidentifyをユーザーに設定
-			if(!empty($user)){
-
-				//セッションにuser_idを登録
-				$session = $this->request->session();
-				$session->write('user_id', $user);
-				$login_user = $session->read('user_id');
-
-
-
-				$this->Auth->setUser($user);
-
-				return $this->redirect($this->Auth->redirectUrl());
-			}
-			$this->Flash->error('ユーザー名かパスワードが間違っています。');
-		}
-	}
-
-	// ログアウト処理
-	public function logout() {
-		// セッションを破棄
-		$this->request->session()->destroy();
-		return $this->redirect($this->Auth->logout());
-	}
 
 	// 認証をしないページの設定
 	// public function beforeFilter(Event $event) {

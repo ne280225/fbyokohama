@@ -14,46 +14,6 @@ use Exception;
  */
 class ParticipationPlansController extends BaseController
 {
-
-  public function tojoin($id = null)
-    {
-      if($id == null){
-
-            $participationPlan = $this->ParticipationPlans->newEntity();
-
-            if ($this->request->is('post')) {
-                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-                if ($this->ParticipationPlans->save($participationPlan)) {
-                    $this->Flash->success(__('The participationPlan has been saved.'));
-
-                    return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-                }
-                $this->Flash->error(__('The participationPlan could not be saved. Please, try again.'));
-                return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-            }
-            $this->set(compact('participationPlan'));
-            return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-          }elseif($id > 1){
-
-            $participationPlan = $this->ParticipationPlans->get($id, [
-                'contain' => []
-            ]);
-            if ($this->request->is(['patch', 'post', 'put'])) {
-
-                $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-                if ($this->ParticipationPlans->save($participationPlan)) {
-                    $this->Flash->success(__('The participation plan has been saved.'));
-
-                    return $this->redirect(['controller' => 'Registrations', 'action' => 'index']);
-                }
-                $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
-            }
-            $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
-            $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
-            $this->set(compact('participationPlan', 'users', 'events'));
-          }
-        }
-
         public function change($id = null)
           {
             if($id == null){
@@ -61,7 +21,9 @@ class ParticipationPlansController extends BaseController
                   $participationPlan = $this->ParticipationPlans->newEntity();
 
                   if ($this->request->is('post')) {
+
                       $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
+
                       if ($this->ParticipationPlans->save($participationPlan)) {
                           $this->Flash->success(__('The participationPlan has been saved.'));
 

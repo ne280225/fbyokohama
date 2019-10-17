@@ -1,12 +1,111 @@
-.button_r {
+html, body, ul, li, span, div, h1. h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+select{
+  border-style: none;
+}
+
+.container{
+  margin: 0;
+  padding: 0;
+}
+.header{
+background-color: #0b0;
+
+/* padding: 1%; */
+display:flex;
+}
+.header .logo_img{
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #f00;
+
+  padding: 3%;
+
+}
+
+.header p{
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: auto 1%;
+}
+
+.main{
+  background-color: #bfb;
+  padding: 2%
+}
+
+.main h3{
+  margin: 0 auto;
+  padding: 3%;
+  text-align: center;
+  font-size: 30px;
+  color: #f22;
+}
+.main table{
+  border-spacing: 0 25px;
+  width: 100%;
+}
+.main table tbody .f_col{
+  background-color: #ffe;
+  border-style:dotted;
+  border-right-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-color: #0a0;
+  border-width: 5px;
+
+  margin: 20px 0;
+}
+.main table thead tr th a{
+  color:#050;
+}
+.main table tbody .col{
+  background-color: #ffe;
+  border-top-style: dotted;
+  border-bottom-style: dotted;
+  border-color: #0a0;
+  border-width: 5px 15px;
+}
+.main table tbody .l_col{
+  background-color: #ffe;
+  border-style: dotted;
+  border-left-style: none;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-color: #0a0;
+  border-width: 5px;
+
+}
+.main table tbody tr .col form button{
+  /* pointer-events: auto; */
     background: #f00;
+    font-size: 18px;
 }
-.button_g {
+
+.main table tbody tr .l_col form button{
+  /* pointer-events: auto; */
     background: #0a0;
+    font-size: 18px;
 }
+
+
+td{
+  text-align: center;
+  font-size: 18px;
+}
+
+
 
 //////////////////////////////////////////
-
+/*
 .disabled a,
 a.disabled {
     pointer-events: none;
@@ -222,7 +321,7 @@ input[type=radio] {
 }
 
 /** Notices and Errors **/
-.cake-error,
+/* .cake-error,
 .cake-debug,
 .notice,
 p.error,
@@ -358,8 +457,8 @@ pre {
     width: 100%;
     table-layout: fixed;
 }
-
-table {
+ */
+/* table {
     background: #fff;
     margin-bottom: 1.25rem;
     border: none;
@@ -481,20 +580,20 @@ div.message.hidden {
 
 .vertical-table td {
     text-align: right;
-}
+} */
 
-.content {
+/* .content {
     padding: 2rem;
 }
 
 /* Use 'one true layout' methods to get equal height columns */
-.container {
+/* .container {
     overflow: hidden;
     min-height: 92%; /* full height almost always */
-}
+/* }  */
 
 /* Force equal height by overflowing */
-.content,
+/* .content,
 #actions-sidebar {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
@@ -530,4 +629,4 @@ div.message.hidden {
 table td {
     vertical-align: top;
     word-break: break-all;
-}
+}  */
