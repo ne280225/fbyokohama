@@ -36,15 +36,29 @@ class RegistrationsController extends BaseController
       $myparticipationPlans = Hash::combine($my->toArray(),'{n}.event_id','{n}');
       $this->set(compact('events','myparticipationPlans','my'));
     }
-
     public function view($id = null)
     {
-        $participationPlan = $this->ParticipationPlans->get($id, [
-            'contain' => ['Users', 'Events']
+        $event = $this->Events->get($id, [
+            'contain' => ['ParticipationPlans']
         ]);
 
-        $this->set('participationPlan', $participationPlan);
+
+        $allusers_name  = $this->Users->get($id, [
+            'contain' => ['ParticipationPlans','Users']
+        ]);
+
+
+        $this->set('event', $event, $allusers_name);
+
     }
+    // public function view($id = null)
+    // {
+    //     $participationPlan = $this->ParticipationPlans->get($id, [
+    //         'contain' => ['Users', 'Events']
+    //     ]);
+    //
+    //     $this->set('participationPlan', $participationPlan);
+    // }
 
     public function join($id = null)
       {

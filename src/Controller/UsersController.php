@@ -56,6 +56,7 @@ class UsersController extends AppController
     $this->set(compact('usernamecategories','categories','allusers'));
 
     if($this->request->isPost()) {
+      $posted = $this;
       $user = $this->Auth->identify();
 
       // Authのidentifyをユーザーに設定
