@@ -42,7 +42,8 @@ class UsersController extends AppController
 
   // ログイン処理
   function login(){
-
+    var_dump($this->request->getData('user_name'));
+    var_dump($this->request->getData('password'));
     //エラーログに出力$this->log($this->Auth->identify());
 
 
@@ -82,7 +83,7 @@ class UsersController extends AppController
   // 認証を使わないページの設定
   public function beforeFilter(Event $event) {
     parent::beforeFilter($event);
-    $this->Auth->allow(['login']);
+    $this->Auth->allow(['login','index','add']);
   }
 
   // 認証時のロールのチェック

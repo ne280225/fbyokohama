@@ -5,8 +5,12 @@
 	<fieldset>
 		<legend>アカウント名とパスワードを入力して下さい。</legend>
 		<!-- <//?= $this->Form->input('user_name',['value'=>'']) ?> -->
-<!-- <//?= $this->Form->hidden('event_id',['value'=>$event->id]); ?> -->
+<!-- <//?= $this->Form->hidden('user_name',['value'=>'6']); ?> -->
+
 		<?= $this->Form->input('password') ?>
+
+
+
 
 		<!-- ユーザーネームカテゴリーのドロップダウン -->
 		<select class="select-categories">
@@ -21,7 +25,7 @@
 
 		<!-- ユーザーネームのドロップダウン -->
 		<!-- <select class="select-user"> -->
-		<select id="user_name">
+		<select id = "user_name" name="user_name">
 
 			<option value=''>名前のカテゴリーを選択してください</option>
 
