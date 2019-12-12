@@ -15,12 +15,10 @@ class CreateEvents extends AbstractMigration
         $table = $this->table('events');
         $table->addColumn('event_name', 'string', [
             'default' => null,
-            'limit' => 30,
             'null' => false,
         ]);
         $table->addColumn('event_place', 'string', [
             'default' => null,
-            'limit' => 30,
             'null' => false,
         ]);
         $table->addColumn('event_start_time', 'datetime', [

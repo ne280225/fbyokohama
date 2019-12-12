@@ -15,27 +15,24 @@ class CreateParticipationPlans extends AbstractMigration
         $table = $this->table('participation_plans');
         $table->addColumn('user_id', 'integer', [
             'default' => null,
-            'limit' => 11,
             'null' => false,
         ]);
         $table->addColumn('event_id', 'integer', [
             'default' => null,
-            'limit' => 11,
             'null' => false,
         ]);
         $table->addColumn('status', 'integer', [
             'default' => null,
-            'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('participation_start_time', 'datetime', [
-            'default' => null,
-            'null' => true,
-        ]);
-        $table->addColumn('participation_end_time', 'datetime', [
-            'default' => null,
-            'null' => true,
-        ]);
+        // $table->addColumn('participation_start_time', 'datetime', [
+        //     'default' => null,
+        //     'null' => true,
+        // ]);
+        // $table->addColumn('participation_end_time', 'datetime', [
+        //     'default' => null,
+        //     'null' => true,
+        // ]);
         $table->create();
     }
 }

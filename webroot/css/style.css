@@ -55,7 +55,7 @@ display:flex;
 }
 .main table tbody .f_col{
   background-color: #ffe;
-  border-style:dotted;
+  /* border-style:dotted; */
   border-right-style: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -69,14 +69,14 @@ display:flex;
 }
 .main table tbody .col{
   background-color: #ffe;
-  border-top-style: dotted;
-  border-bottom-style: dotted;
+  /* border-top-style: dotted;
+  border-bottom-style: dotted; */
   border-color: #0a0;
   border-width: 5px 15px;
 }
 .main table tbody .l_col{
   background-color: #ffe;
-  border-style: dotted;
+  /* border-style: dotted; */
   border-left-style: none;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;

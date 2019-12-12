@@ -1,5 +1,5 @@
 <div class="users form">
-	<?= $posted ?>
+	<//?= $posted ?>
 	<?= $this->Flash->render('auth') ?>
 	<?= $this->Form->create() ?>
 	<fieldset>
