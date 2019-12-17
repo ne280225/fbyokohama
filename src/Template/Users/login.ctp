@@ -1,16 +1,9 @@
 <div class="users form">
 	<//?= $posted ?>
 	<?= $this->Flash->render('auth') ?>
-	<?= $this->Form->create() ?>
+	<?= $this->Form->create('password',['name'=>'password']) ?>
 	<fieldset>
 		<legend>アカウント名とパスワードを入力して下さい。</legend>
-		<!-- <//?= $this->Form->input('user_name',['value'=>'']) ?> -->
-<!-- <//?= $this->Form->hidden('user_name',['value'=>'6']); ?> -->
-
-		<?= $this->Form->input('password') ?>
-
-
-
 
 		<!-- ユーザーネームカテゴリーのドロップダウン -->
 		<select class="select-categories">
@@ -24,29 +17,50 @@
 		</select>
 
 		<!-- ユーザーネームのドロップダウン -->
-		<!-- <select class="select-user"> -->
 		<select id = "user_name" name="user_name">
 
 			<option value=''>名前のカテゴリーを選択してください</option>
 
 			<?php foreach ($json_allusers as $key => $value): ?>
-
 				<option value='<?= $key ?>'><?= $category_key ?></option>
-
 			<?php endforeach; ?>
 
 		</select>
 
+		<!-- パスワードのボタン -->
+		<ul>
+			<li>
+				<button id ="1" class="button" type="button"><img src="../img/mouse.jpg" class="button1_img"></span></button>
+				<button id ="2" class="button" type="button"><img src="../img/cow.jpg" class="button2_img"></span></button>
+				<button id ="3" class="button" type="button"><img src="../img/tiger.jpg" class="button3_img"></span></button>
+			</li>
+			<li>
+				<button id ="4" class="button" type="button"><img src="../img/rabbit.jpg" class="button4_img"></span></button>
+				<button id ="5" class="button" type="button"><img src="../img/dragon.jpg" class="button5_img"></span></button>
+				<button id ="6" class="button" type="button"><img src="../img/sheep.jpg" class="button6_img"></span></button>
+			</li>
+			<li>
+				<button id ="7" class="button" type="button"><img src="../img/house.jpg" class="button7_img"></span></button>
+				<button id ="8" class="button" type="button"><img src="../img/snake.jpg" class="button8_img"></span></button>
+				<button id ="9" class="button" type="button"><img src="../img/monkey.jpg" class="button9_img"></span></button>
+			</li>
+			<li>
+				<button id ="10" class="button" type="button"><img src="../img/bird.jpg" class="button10_img"></span></button>
+				<button id ="11" class="button" type="button"><img src="../img/dog.jpg" class="button11_img"></span></button>
+				<button id ="12" class="button" type="button"><img src="../img/boar.jpg" class="button12_img"></span></button>
+			</li>
+		</ul>
+
 		<?php $json_allusers = json_encode($allusers) ?>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 		<script type="text/javascript">
 
-
+		//１つめのドロップダウンが選択されたら、２つめの子要素を変更する。
 		var arr = <?php echo($json_allusers); ?>;
 
-			$(function($) {
+		$(function($) {
 			$('.select-categories').change(function() {
 
 				$('#user_name').children().remove();
@@ -62,46 +76,61 @@
 						Object.keys(arr[key]).forEach(function(k) {
 							console.log(arr[key][k]);
 							if(count == 0){
-									$('#user_name').append($('<option>').html('選択してください').val(''));
+								$('#user_name').append($('<option>').html('選択してください').val(''));
 							}
 							$('#user_name').append($('<option>').html(arr[key][k]).val(arr[key][k]));
 							count++;
 						});
 					}
 				});
-if(count == 0){
+				if(count == 0){
 					$('#user_name').append($('<option>').html('名前のカテゴリーを選択してください').val(''));
-			}
+				}
 
- 			});
+			});
 		});
 
-//これは使う
-// 		$(function($) {
-// 			console.log("ok1");
-// 			$('#user_name').change(function() {
-// console.log("ok2");
-// 				$('#user-name').val($('#user-name').val());
-// 				//console.log(category_id);
-// 			});
-// 		});
+		//パスワード
+		var pass = [0,0,0,0,0,0,0,0,0,0,0,0];
+		$(function($){
+			$('.button').on('click', function (){
+				var id = $(this).attr("id");
+				// alert(id);
 
+				if(pass[id-1]==0){
+					pass[id-1] = 1;
+				$(this).css({
+					'border-style' : 'solid',
+					'border-width' : '5px',
+					'border-color' : 'red'
+				});
+			}else{
+				pass[id-1] = 0;
+				$(this).css({
+				'border-style' : 'solid',
+				'border-width' : '5px',
+				'border-color' : 'white'
+			});
+		}
+			alert(pass);
+			$(function() {
+    // エレメントを作成
+    var ele = document.createElement('input');
+    // データを設定
+    ele.setAttribute('type', 'hidden');
+		ele.setAttribute('id', 'password');
+    ele.setAttribute('name', 'password');
+    ele.setAttribute('value', pass);
+    // 要素を追加
+    document.password.appendChild(ele);
+});
 
+		});
+	});
 
-		// var arr = <//?php echo($json_allusers); ?>;
-		// console.log(arr);
-		// // Object.keys(arr).forEach(function(key) {
-		// Object.keys(arr).forEach(function(key) {
-		// 	if(key == '1'){
-		// 		Object.keys(arr[key]).forEach(function(k) {
-		// 			console.log(arr[key][k]);
-		// 		});
-		// 	}
-		// });
+		</script>
 
-	</script>
-
-</fieldset>
-<?= $this->Form->button(__('Login')); ?>
-<?= $this->Form->end() ?>
+	</fieldset>
+	<?= $this->Form->button(__('Login')); ?>
+	<?= $this->Form->end() ?>
 </div>

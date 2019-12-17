@@ -10,10 +10,25 @@ a{
 select{
   border-style: none;
 }
+li{
+  list-style-type: none;
+}
 
 .container{
   margin: 0;
   padding: 0;
+}
+
+/* roginページ */
+.button{
+  width: 120px;
+  border-style: solid;
+  border-width: 5px;
+  border-color : white;
+}
+
+.button1_img, .button2_img, .button3_img, .button4_img, .button5_img, .button6_img, .button7_img, .button8_img, .button9_img, .button10_img, .button11_img, .button12_img{
+  width: 100px;
 }
 .header{
 background-color: #0b0;

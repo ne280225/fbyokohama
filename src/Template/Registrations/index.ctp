@@ -14,7 +14,6 @@
 <h3>登録画面(Registrations)</h3>
 <?php $user_id = $this->request->session()->read('Auth.User.id'); ?>
 
-<!-- <pre><//?php var_dump($participationPlan); ?></pre> -->
 <table>
   <thead>
     <tr>
