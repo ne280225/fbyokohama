@@ -42,8 +42,8 @@ class UsersController extends AppController
 
   // ログイン処理
   function login(){
-    var_dump($this->request->getData('user_name'));
-    var_dump($this->request->getData('password'));
+    //var_dump($this->request->getData('user_name'));
+    //var_dump($this->request->getData('password'));
     //エラーログに出力$this->log($this->Auth->identify());
 
 
@@ -128,11 +128,12 @@ class UsersController extends AppController
     if ($this->request->is('post')) {
       $user = $this->Users->patchEntity($user, $this->request->getData());
       $user->password= (new DefaultPasswordHasher)->hash($user->password);
-      var_dump($user);
+
       if ($this->Users->save($user)) {
         $this->Flash->success(__('The user has been saved.'));
         return $this->redirect(['action' => 'index']);
       }
+
       $this->Flash->error(__('The user could not be saved. Please, try again.'));
     }
     $userRoles = $this->Users->UserRoles->find('list', ['limit' => 200]);

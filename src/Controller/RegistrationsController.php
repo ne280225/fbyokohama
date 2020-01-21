@@ -24,6 +24,7 @@ class RegistrationsController extends BaseController
     {
 // var_dump($this->request->session()->read('Auth.User.id'));
      $this->paginate = [
+         // 'contain' => ['ParticipationPlans']
          'contain' => ['ParticipationPlans']
        ];
       $events = $this->paginate($this->Events);
@@ -38,17 +39,20 @@ class RegistrationsController extends BaseController
     }
     public function view($id = null)
     {
-        $event = $this->Events->get($id, [
-            'contain' => ['ParticipationPlans']
-        ]);
+        // $event = $this->Events->get($id, [
+        //     //'contain' => ['ParticipationPlans']
+        //     'contain' => ['Events']
+        // ]);
 
 
-        $allusers_name  = $this->Users->get($id, [
-            'contain' => ['ParticipationPlans','Users']
-        ]);
+        // $allusers_name  = $this->Users->get($id, [
+        //     'contain' => ['ParticipationPlans','Users']
+        // ]);
 
 
-        $this->set('event', $event, $allusers_name);
+        //$this->set('event', $event, $allusers_name);
+
+        $this->set('event');
 
     }
     // public function view($id = null)
@@ -88,30 +92,4 @@ class RegistrationsController extends BaseController
 
           return $this->redirect(['action' => 'index']);
       }
-  // public function change($id = null)
-  //   {
-  //     if($id = null){
-  //
-  //       $participationPlan = $this->ParticipationPlans->newEntity();
-  //
-  //     }else{
-  //       $participationPlan = $this->ParticipationPlans->get($id, [
-  //           'contain' => ['Users', 'Events','ParticipationPlans']
-  //       ]);
-  //     }
-  //       if ($this->request->is(['patch', 'post', 'put'])) {
-  //           $participationPlan = $this->ParticipationPlans->patchEntity($participationPlan, $this->request->getData());
-  //           if ($this->ParticipationPlans->save($participationPlan)) {
-  //               $this->Flash->success(__('The participation plan has been saved.'));
-  //
-  //               return $this->redirect(['action' => 'index']);
-  //           }
-  //           $this->Flash->error(__('The participation plan could not be saved. Please, try again.'));
-  //       }
-  //       $users = $this->ParticipationPlans->Users->find('list', ['limit' => 200]);
-  //       $events = $this->ParticipationPlans->Events->find('list', ['limit' => 200]);
-  //       $this->set(compact('participationPlan', 'users', 'events'));
-  //
-  //   }
-
 }

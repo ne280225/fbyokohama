@@ -33,7 +33,7 @@
     <?php foreach ($events as $event): ?>
 
       <tr>
-        <td class="f_col"><?= h($event->event_name) ?></td>
+        <td class="f_col"><?= $this->Html->link(__($event->event_name), ['controller'=>'events','action' => 'view', $event->id]) ?><!--<//?= h($event->event_name) ?>--></td>
         <td class="col"><?= h($event->event_place) ?></td>
         <td class="col"><?= h($event->event_start_time->format('m/d') )?></td>
         <td class="col"><?= h($event->event_start_time->format('H:i') )?></td>

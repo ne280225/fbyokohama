@@ -25,7 +25,7 @@
             <?php foreach ($events as $event): ?>
             <tr>
                 <td><?= $this->Number->format($event->id) ?></td>
-                <td><?= h($event->event_name) ?></td>
+                <td><?= $this->Html->link(__($event->event_name), ['action' => 'view', $event->id]) ?><!-- <//?= h($event->event_name) ?></td> -->
                 <td><?= h($event->event_place) ?></td>
                 <td><?= h($event->event_start_time) ?></td>
                 <td><?= h($event->event_end_time) ?></td>

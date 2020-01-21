@@ -88,6 +88,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->existsIn(['user_role_id'], 'UserRoles'));
         $rules->add($rules->existsIn(['user_name_category_id'], 'UserNameCategories'));
+        $rules->add($rules->isUnique(['user_name'],'すでに存在するニックネームです'));
 
         return $rules;
     }

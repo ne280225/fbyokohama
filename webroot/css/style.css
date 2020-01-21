@@ -1,34 +1,61 @@
-html, body, ul, li, span, div, h1. h2, h3, h4, h5, h6, p {
+/* リセット */
+html, form, ul, li, span, div, h1. h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
+  border-style: none;
+  border-width: none;
   line-height: 0;
   list-style: none;
 }
+body{
+  margin: 0;
+  padding: 0;
+}
+fieldset{
+  border-style: none;
+}
+
+
 a{
   text-decoration: none;
 }
 select{
   border-style: none;
 }
-li{
+ul, li{
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
 .container{
   margin: 0;
   padding: 0;
+  background-color: #f5f2e9;
 }
 
-/* roginページ */
+/* loginページ */
+.login{
+  margin: 0;
+  padding: 0;
+
+  height: 5000px;
+  background-color: #f5f2e9;
+}
 .button{
-  width: 120px;
+  width: 110px;
   border-style: solid;
-  border-width: 5px;
-  border-color : white;
+  border-width: 4px;
+  border-color : #f5f2e9;
 }
-
+.button_table{
+  margin: 0 auto;
+}
 .button1_img, .button2_img, .button3_img, .button4_img, .button5_img, .button6_img, .button7_img, .button8_img, .button9_img, .button10_img, .button11_img, .button12_img{
-  width: 100px;
+  width: 90px;
+  height: 90px;
+  display:inline;
+  margin: auto;
 }
 .header{
 background-color: #0b0;

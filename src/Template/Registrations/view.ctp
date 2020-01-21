@@ -6,31 +6,40 @@
 ?>
 
 <div class="events view large-9 medium-8 columns content">
-  <?= var_dump($allusers_name); ?>
-    <h3><?= h($event->id) ?></h3>
-    <table class="vertical-table">
+  <//?= var_dump($event); ?>
+
+  <h3><?= h($event->id) ?></h3>
+  <table class="vertical-table">
+      <tr>
+          <th scope="row"><?= __('Event Name') ?></th>
+          <td><?= h($event->event_name) ?></td>
+      </tr>
+      <tr>
+          <th scope="row"><?= __('Event Place') ?></th>
+          <td><?= h($event->event_place) ?></td>
+      </tr>
       <tr>
           <th scope="row"><?= __('Id') ?></th>
           <td><?= $this->Number->format($event->id) ?></td>
       </tr>
-        <tr>
-            <th scope="row"><?= __('Event Name') ?></th>
-            <td><?= h($event->event_name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Event Place') ?></th>
-            <td><?= h($event->event_place) ?></td>
-        </tr>
+      <tr>
+          <th scope="row"><?= __('Event Start Time') ?></th>
+          <td><?= h($event->event_start_time) ?></td>
+      </tr>
+      <tr>
+          <th scope="row"><?= __('Event End Time') ?></th>
+          <td><?= h($event->event_end_time) ?></td>
+      </tr>
+  </table>
 
-        <tr>
-            <th scope="row"><?= __('Event Start Time') ?></th>
-            <td><?= h($event->event_start_time) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Event End Time') ?></th>
-            <td><?= h($event->event_end_time) ?></td>
-        </tr>
-    </table>
+
+
+
+
+
+
+
+
     <div class="related">
         <h4><?= __('Related Participation Plans') ?></h4>
         <?php if (!empty($event->participation_plans)): ?>
